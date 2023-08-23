@@ -31,6 +31,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
+
         <Head title="Log in" />
 
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
@@ -41,15 +42,8 @@ const submit = () => {
             <div>
                 <Label for="email" value="Email" />
 
-                <Input
-                    id="email"
-                    type="email"
-                    class="block w-full mt-1"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
+                <Input id="email" type="email" class="block w-full mt-1" v-model="form.email" required autofocus
+                    autocomplete="username" />
 
                 <Error class="mt-2" :message="form.errors.email" />
             </div>
@@ -57,14 +51,8 @@ const submit = () => {
             <div class="mt-4">
                 <Label for="password" value="Password" />
 
-                <Input
-                    id="password"
-                    type="password"
-                    class="block w-full mt-1"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
+                <Input id="password" type="password" class="block w-full mt-1" v-model="form.password" required
+                    autocomplete="current-password" />
 
                 <Error class="mt-2" :message="form.errors.password" />
             </div>
@@ -77,15 +65,18 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Forgot your password?
+                <Link v-if="canResetPassword" :href="route('password.request')"
+                    class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Forgot your password?
+                </Link>
+                <span>&#160; or &#160;</span>
+                <Link :href="route('register')"
+                    class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Register?
                 </Link>
 
-                <Button color="black" type="submit" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <Button color="black" type="submit" class="ml-4" :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing">
                     Log in
                 </Button>
             </div>
